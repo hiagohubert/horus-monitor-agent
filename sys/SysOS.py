@@ -10,7 +10,7 @@ class SysOS(object):
         distributor_id = out.split(":")
         return distributor_id[1].strip()
 
-    def get
+ 
 
 teste = SysOS()
 teste.getDistributorID()

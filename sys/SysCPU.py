@@ -49,7 +49,8 @@ class SysCPU(object):
 
     def CPUinfo(self):
         cpu = CPU(self.getArchitecture(), self.getVendorID(), self.getModelName(), self.getCPUCores(), self.getPercentUsed())
-        print cpu.percent_used
+        return cpu.percent_used
+
 
 
 

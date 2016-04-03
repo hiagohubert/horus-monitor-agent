@@ -1,1 +1,1 @@
-from entities.CPU import CPU
+from entities import *
