@@ -10,7 +10,25 @@ class SysOS(object):
         distributor_id = out.split(":")
         return distributor_id[1].strip()
 
- 
+    def getRelease(self):
+        proc1 = subprocess.Popen(shlex.split('lsb_release -r'), stdout=subprocess.PIPE)
+        out, err = proc1.communicate()
+        release = out.split(":")
+        return release[1].strip()
 
-teste = SysOS()
-teste.getDistributorID()
+    def getCodeName(self):
+        proc1 = subprocess.Popen(shlex.split('lsb_release -c'), stdout=subprocess.PIPE)
+        out, err = proc1.communicate()
+        codename = out.split(":")
+        return codename[1].strip()
+
+    def getDescription(self):
+        proc1 = subprocess.Popen(shlex.split('lsb_release -d'), stdout=subprocess.PIPE)
+        out, err = proc1.communicate()
+        description = out.split(":")
+        return description[1].strip()
+
+    def OSinfo(self):
+        os = OS(self.getDistributorID(), self.getRelease(), self.getCodeName(), self.getDescription())
+        return os
+
