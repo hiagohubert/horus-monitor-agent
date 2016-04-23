@@ -6,6 +6,10 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from entities.Memory import Memory
 
 class SysMemory(object):
+    memory = None
+
+    def __init__(self):
+        self.getMemory()
 
     def getMemory(self):
         proc1 = subprocess.Popen(shlex.split('free -h'), stdout=subprocess.PIPE)
@@ -23,4 +27,4 @@ class SysMemory(object):
 
         memory = Memory(float(memory_data[1].replace("G", "").replace(",", ".")), float(memory_data[2].replace("G", "").replace(",", ".")), float(memory_data[3].replace("G", "").replace(",", ".")))
 
-        return memory
+        self.memory = memory

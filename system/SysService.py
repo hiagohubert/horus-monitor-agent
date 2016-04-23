@@ -11,6 +11,9 @@ from entities.ServiceStatus import ServiceStatus
 class SysService(object):
     service_list = []
 
+    def __init__(self):
+        self.getAllServices()
+
     def getAllServices(self):
         proc1 = subprocess.Popen(shlex.split('service --status-all'), stdout=subprocess.PIPE)
 

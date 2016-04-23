@@ -12,4 +12,4 @@ class Disc(object):
         self.used = used
         self.free = free
         self.mounted_in = mounted_in
-        self.free_percent = free_percent
+        self.free_percent = str(100.0 - float( free_percent ))

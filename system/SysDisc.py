@@ -32,8 +32,9 @@ class SysDisc(object):
             out, err = proc3.communicate()
 
             disco_info = out.split()
-            print disco_info
-            disc = Disc(disco_info[0], disco_info[1], disco_info[2], disco_info[3], disco_info[4], disco_info[5])
+
+            disc = Disc(disco_info[0], disco_info[1], disco_info[2], disco_info[3], disco_info[4].replace("%", ""), disco_info[5])
             self.discs.append(disc)
+
 
 
