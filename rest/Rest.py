@@ -9,6 +9,9 @@ from system.SysMemory import SysMemory
 
 class Rest(object):
 
+    token = open('data/token.dat', 'r')
+    token = token.readline()
+
     def saveServiceInfo(self):
         services = SysService()
         data = []
@@ -22,8 +25,8 @@ class Rest(object):
         os = SysOS()
         os_info = os.OSinfo()
         data = {"distributor_id": os_info.distributor_id, "release": os_info.release,
-                "codename": os_info.codename, "description": os_info.description}
-        requests.post("http://rest", data=data) #TODO
+                "codename": os_info.codename, "description": os_info.description, "token":self.token}
+        requests.post("http://127.0.0.1:8000/api/os/", data=data)
 
     def saveDiscInfo(self):
         disc = SysDisc()
