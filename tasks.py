@@ -23,7 +23,7 @@ class Tasks(object):
 
     def initWithSystem(self):
         f = open('/etc/rc.local', 'w')
-        f.write(self.local_app+ "/monitor.py\nexit 0 ")
+        f.write("python "+self.local_app+ "/monitor.py\nexit 0 ")
         f.close()
 
     def runMonitor(self):

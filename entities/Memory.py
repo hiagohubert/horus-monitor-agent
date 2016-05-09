@@ -8,4 +8,4 @@ class Memory(object):
         self.total = total
         self.used = used
         self.free = free
-        self.percent_used = (used/total) * 100
+        self.percent_used = '{0:.2g}'.format((used/total) * 100)

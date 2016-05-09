@@ -1,0 +1,4 @@
+"""Configs"""
+
+HOST = "http://127.0.0.1:8000"
+DELAY_BETWEEN_REQUESTS = 300

@@ -2,6 +2,8 @@ import subprocess
 import shlex
 import sys
 import os.path
+import re
+
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from entities.Disc import Disc
 
@@ -12,6 +14,7 @@ class SysDisc(object):
         self.getDiscs()
 
     def getDiscs(self):
+        number = re.compile(r'[^\d]+')
         proc1 = subprocess.Popen(shlex.split('df -h'), stdout=subprocess.PIPE)
         proc2 = subprocess.Popen(shlex.split('wc -l'), stdin=proc1.stdout,
                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
