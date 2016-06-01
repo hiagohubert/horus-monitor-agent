@@ -5,7 +5,7 @@ import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import tasks
-
+import config
 
 task = tasks.Tasks()
 if not os.getuid() == 0:
@@ -26,7 +26,7 @@ token = raw_input()
 
 print "\n \nO token informado foi: "+token
 
-test_token = requests.get("http://127.0.0.1:8000/api/machine/"+token)
+test_token = requests.get(config.HOST+"/api/machine/"+token)
 
 if test_token.status_code == 200:
     result = json.loads(test_token.content)

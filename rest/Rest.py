@@ -17,9 +17,8 @@ class Rest(object):
         services = SysService()
         data = []
         for service in services.service_list:
-            if service.status.value == 1:
-                data = {"name": service.name, "status": service.status.value, "token":self.token}
-                requests.post(config.HOST+"/api/service/", data=data)
+            data = {"name": service.name, "status": service.status.value, "token":self.token}
+            requests.post(config.HOST+"/api/service/", data=data)
 
     def saveOSInfo(self):
         os = SysOS()

@@ -22,7 +22,7 @@ class SysDisc(object):
         out, err = proc2.communicate()
         num_disc = int(out) - 1
 
-        for i in range(num_disc ,1, -1):
+        for i in range(num_disc ,0, -1):
             proc1 = subprocess.Popen(shlex.split('df -h'), stdout=subprocess.PIPE)
             proc2 = subprocess.Popen(shlex.split('tail -n ' +str(i)), stdin=proc1.stdout,
                                      stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -33,11 +33,7 @@ class SysDisc(object):
             proc2.stdout.close()
 
             out, err = proc3.communicate()
-
             disco_info = out.split()
 
             disc = Disc(disco_info[0], disco_info[1], disco_info[2], disco_info[3], disco_info[4].replace("%", ""), disco_info[5])
             self.discs.append(disc)
-
-
-
