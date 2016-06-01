@@ -23,11 +23,18 @@ def monitorDisc():
         rest.saveDiscInfo()
         time.sleep(config.DELAY_BETWEEN_REQUESTS)
 
+def monitorService():
+    print "Iniciando monitoramento de servicos..."
+    while True:
+        rest.saveServiceInfo()
+        time.sleep(config.DELAY_BETWEEN_REQUESTS)
+
 def core():
     try:
         threading.Thread(target=monitorCPU).start()
         threading.Thread(target=monitorMemory).start()
         threading.Thread(target=monitorDisc).start()
+        threading.Thread(target=monitorService).start()
     except:
         print "Problema ao iniciar thread"
 

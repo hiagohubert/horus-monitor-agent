@@ -47,7 +47,3 @@ class Rest(object):
         data = {"architecture": cpu_info.architecture, "vendor_id": cpu_info.vendor_id, "model_name": cpu_info.model_name,
                 "cpu_cores": cpu_info.cpu_cores, "percent_used": cpu_info.percent_used, "token": self.token }
         requests.post(config.HOST+"/api/cpu/", data=data)
-
-
-rest = Rest()
-rest.saveServiceInfo()
